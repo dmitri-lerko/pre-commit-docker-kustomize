@@ -3,4 +3,6 @@
     description: kustomize provided by docker
     entry: kustomize build
     language: docker
-    args: [overlay/production-us]
+    args: [overlay/production]
+    always_run: true
+    pass_filenames: false

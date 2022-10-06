@@ -1,10 +1,14 @@
 FROM alpine:latest
+
+ENV KUSTOMIZE_VERSION=v4.5.7
+ENV KUSTOMIZE_CHECKSUM="701e3c4bfa14e4c520d481fdf7131f902531bfc002cb5062dcf31263a09c70c9"
+
 RUN adduser kustomize -D \
   && apk add curl git openssh \
   && git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-RUN  curl -L --output /tmp/kustomize_v3.3.0_linux_amd64.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.3.0/kustomize_v3.3.0_linux_amd64.tar.gz \
-  && echo "4b49e1bbdb09851f11bb81081bfffddc7d4ad5f99b4be7ef378f6e3cf98d42b6  /tmp/kustomize_v3.3.0_linux_amd64.tar.gz" | sha256sum -c \
-  && tar -xvzf /tmp/kustomize_v3.3.0_linux_amd64.tar.gz -C /usr/local/bin \
+RUN  curl -L --output /tmp/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz \
+  && echo "${KUSTOMIZE_CHECKSUM}  /tmp/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" | sha256sum -c \
+  && tar -xvzf /tmp/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz -C /usr/local/bin \
   && chmod +x /usr/local/bin/kustomize \
   && mkdir ~/.ssh \
   && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts

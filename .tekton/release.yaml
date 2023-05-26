@@ -6,7 +6,7 @@ metadata:
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main, refs/tags/*]"
-    pipelinesascode.tekton.dev/task: "[git-clone, buildah-as-user]"
+    pipelinesascode.tekton.dev/task: "[git-clone]"
     pipelinesascode.tekton.dev/max-keep-runs: "5"
 spec:
   params:

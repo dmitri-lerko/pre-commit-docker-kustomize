@@ -4,13 +4,10 @@ kind: PipelineRun
 metadata:
   name: release
   annotations:
-    application-name: "op1st tekton release pipeline"
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main, refs/tags/*]"
     pipelinesascode.tekton.dev/task: "[git-clone]"
     pipelinesascode.tekton.dev/max-keep-runs: "5"
-    operator.tekton.dev/prune.resources: "taskrun, pipelinerun"
-    operator.tekton.dev/prune.keep-since: 120
 spec:
   params:
     - name: repo_url

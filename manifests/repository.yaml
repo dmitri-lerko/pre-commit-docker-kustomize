@@ -1,0 +1,8 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  creationTimestamp: null
+  name: github-com-b4mad-pre-commit-kustomize
+  namespace: op1st-pipelines
+spec:
+  url: https://github.com/b4mad/pre-commit-kustomize

@@ -10,3 +10,4 @@ RUN  curl -L --output /tmp/kustomize_v5.0.3_linux_amd64.tar.gz https://github.co
   && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 USER kustomize
 WORKDIR /src
+RUN KUSTOMIZE_DIRS=$(find . -type f -name '*kustomization.yaml' | sed -E 's|/[^/]+$||' |sort -u )

@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+LABEL org.opencontainers.image.source = "https://github.com/b4mad/pre-commit-kustomize"
+
 RUN adduser kustomize -D \
   && apk add curl git openssh \
   && git config --global url.ssh://git@github.com/.insteadOf https://github.com/

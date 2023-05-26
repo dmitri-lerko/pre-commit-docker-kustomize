@@ -35,6 +35,7 @@ spec:
       - name: build-release-container-image
         taskRef:
           name: buildah-as-user
+          namespace: op1st-pipelines
         runAfter:
           - fetch-repository
         workspaces:

@@ -1,8 +1,8 @@
--   id: kustomize
-    name: kustomize (via docker)
-    description: kustomize provided by docker
-    entry: kustomize build
-    language: docker
-    args: [overlay/production]
-    always_run: true
-    pass_filenames: false
+- id: kustomize
+  name: kustomize (containerized)
+  description: kustomize provided in a container
+  entry: kustomize build
+  language: docker
+  args: [overlay/production]
+  always_run: true
+  pass_filenames: false
